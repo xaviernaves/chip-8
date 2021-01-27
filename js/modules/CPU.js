@@ -68,9 +68,11 @@ export class CPU {
         for (let loc = 0; loc < program.length; loc++) {
             this.memory[0x200 + loc] = program[loc];
         }
+        this.paused = false;
     }
 
     loadROM(name) {
+        this.paused = true;
         let request = new XMLHttpRequest();
         const self = this;
 
